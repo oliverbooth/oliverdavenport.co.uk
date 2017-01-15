@@ -1,0 +1,25 @@
+{
+  "name": "oliverdavenport.co.uk",
+  "description": "Source code for oliverdavenport.co.uk",
+  "bugs": "https://github.com/oliverlukedavenport/oliverdavenport.co.uk/issues",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oliverlukedavenport/oliverdavenport.co.uk"
+  },
+  "author": {
+    "name": "Oliver Davenport",
+    "email": "me@olivr.me",
+    "url": "https://oliverdavenport.co.uk/"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-sass": "^2.0.0",
+    "load-grunt-tasks": "^3.5.2"
+  }
+}
