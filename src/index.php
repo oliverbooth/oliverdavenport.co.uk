@@ -24,6 +24,7 @@
             <ul class="list-inline h2">
                 <li class="list-inline-item"><a href="https://github.com/oliverlukedavenport/" data-toggle="tooltip" data-placement="top" title="oliverlukedavenport"><i class="fa fa-github"></i></a></li>
                 <li class="list-inline-item"><a href="https://twitter.com/oldavenport/" data-toggle="tooltip" data-placement="top" title="@oldavenport"><i class="fa fa-twitter"></i></a></li>
+                <li class="list-inline-item"><a href="mailto:me@olivr.me" data-toggle="tooltip" data-placement="top" title="me@olivr.me"><i class="fa fa-envelope"></i></a></li>
             </ul>
             <small class="text-muted">&copy; <?= date("Y") ?></small>
         </div>
