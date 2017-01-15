@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/css/tether.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="/css/style.min.css">
+    <link rel="shortcut icon" href="/img/icon.png?<?= time() ?>">
     <title>Oliver Davenport</title>
 </head>
 
