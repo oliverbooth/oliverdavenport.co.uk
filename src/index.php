@@ -25,13 +25,14 @@
             <hr>
             <ul class="list-inline h4">
                 <li class="list-inline-item"><a href="https://github.com/oliverlukedavenport/" target="_blank" data-toggle="tooltip" data-placement="top" title="oliverlukedavenport"><i class="fa fa-github"></i></a></li>
+                <li class="list-inline-item"><a href="https://facebook.com/oldavenport/" target="_blank" data-toggle="tooltip" data-placement="top" title="oldavenport"><i class="fa fa-facebook"></i></a></li>
                 <li class="list-inline-item"><a href="https://twitter.com/oldavenport/" target="_blank" data-toggle="tooltip" data-placement="top" title="@oldavenport"><i class="fa fa-twitter"></i></a></li>
                 <li class="list-inline-item"><a href="mailto:me@olivr.me" target="_blank" data-toggle="tooltip" data-placement="top" title="me@olivr.me"><i class="fa fa-envelope"></i></a></li>
             </ul>
             <small class="text-muted">&copy; <?= date("Y") ?></small>
         </div>
     </div>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
