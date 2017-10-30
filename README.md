@@ -14,9 +14,9 @@ This source code is open for educational purposes, and I encourage you to clone,
 ## Building
 ```bash
 npm install
-grunt
+grunt initial
 ```
 
-`node_modules` is ignored in this repository for reasons that should be obvious if you understand node.
+The `initial` task runs `grunt-contrib-copy` where `default` runs `grunt-copy-modified`.
 
-Output can be found in the `dist/` directory.
+Output is found in the `dist/` directory.
