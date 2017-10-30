@@ -1,27 +1,24 @@
-var KEY_CTRL = 17;
-var KEY_CMD  = 91;
+/*jslint browser:true */
+/*global $*/
 
 $(function () {
     "use strict";
     $("[data-toggle=\"tooltip\"]").tooltip();
-    
-    var ctrl = false;
-    $(document).keydown(function (e) {
-        if (e.keyCode === KEY_CTRL || e.keyCode === KEY_CMD) {
-            ctrl = true;
-        }
-    }).keyup(function (e) {
-        if (e.keyCode === KEY_CTRL || e.keyCode === KEY_CMD) {
-            ctrl = false;
-        }
+
+    $(".social-links li.animated").each(function (i, v) {
+        $(v).css("animation-delay", (0.05 * i) + "s");
     });
-    
-    $("*").keydown(function (e) {
-        if (ctrl && (e.keyCode === 85 /* U */)) {
-            e.stopPropagation();
-            e.preventDefault();
-            
-            window.open("https://github.com/oliverlukedavenport/oliverdavenport.co.uk", "_blank");
-        }
+
+    anime({
+        targets: '#svg-logo path',
+        strokeDashoffset: [anime.setDashoffset, 0],
+        easing: 'easeInOutSine',
+        duration: 1500,
+        delay: function (el, i) {
+            return i * 250;
+        },
+        direction: 'alternate',
+        loop: true
     });
+
 });

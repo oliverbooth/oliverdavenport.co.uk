@@ -1,28 +1,78 @@
-/*jslint node:true */
+/*jslint node:true */ /*global module,require */
+
+var copy_task = {
+    dist: {
+        files: [
+            // Apache files
+            {
+                expand: true,
+                cwd: "src/",
+                src: ["**/.htaccess", "**/.htpasswd"],
+                dest: "dist/",
+                filter: "isFile"
+            },
+
+            // Source files
+            {
+                expand: true,
+                cwd: "src/",
+                src: ["**/*.php", "**/*.phtml", "**/*.html"],
+                dest: "dist/",
+                filter: "isFile"
+            },
+
+            // Resources
+            {
+                expand: true,
+                cwd: "src/",
+                src: ["**/*.jpg", "**/*.png", "**/*.gif", "**/*.svg", "**/*.mp3"],
+                dest: "dist/",
+                filter: "isFile"
+            }
+        ],
+            expand: true,
+            dot: true,
+            verbose: true
+    }
+};
 
 module.exports = function (grunt) {
     "use strict";
     require("load-grunt-tasks")(grunt);
 
+    // noinspection SpellCheckingInspection
     grunt.initConfig({
         pkg: grunt.file.readJSON("package.json"),
 
         clean: {
-            dist: [ "dist" ]
+            dist: ["out", "dist"],
+            out: ["out"]
         },
 
-        copy: {
-            dist: {
-                files: [
-                    // Apache files
-                    { expand: true, cwd: "src/", src: [ "**/.htaccess", "**/.htpasswd" ], dest: "dist/", filter: "isFile" },
-                    
-                    // Source files
-                    { expand: true, cwd: "src/", src: [ "**/*.php", "**/*.phtml", "**/*.html" ], dest: "dist/", filter: "isFile" },
+        copy: copy_task,
+        copy_modified: copy_task,
 
-                    // Resources
-                    { expand: true, cwd: "src/", src: [ "**/*.jpg", "**/*.png", "**/*.gif", "**/*.svg" ], dest: "dist/", filter: "isFile" }
-                ]
+        uglify: {
+            dist: {
+                options: {
+                    sourceMap: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: "out/",
+                    src: ["**/*.js"],
+                    dest: "dist/",
+                    filter: "isFile",
+                    ext: ".min.js"
+                },
+                    {
+                        expand: true,
+                        cwd: "src/",
+                        src: ["**/*.js"],
+                        dest: "dist/",
+                        filter: "isFile",
+                        ext: ".min.js"
+                    }]
             }
         },
 
@@ -33,32 +83,36 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    "dist/css/style.min.css": "src/sass/style.scss"
+                    "out/css/style.min.css": "src/sass/style.scss",
+                    "out/projects/lifx-music-studio/css/style.min.css": "src/projects/lifx-music-studio/sass/style.scss",
+                    "out/projects/whatcanweplay/css/style.min.css": "src/projects/whatcanweplay/sass/style.scss"
                 }
             }
         },
 
-        uglify: {
+        postcss: {
             dist: {
                 options: {
-                    sourceMap: true
+                    map: true, // inline sourcemaps
+                    processors: [
+                        require("autoprefixer")({
+                            browsers: "last 2 versions"
+                        }) // add vendor prefixes
+                    ]
                 },
-                files: [
-                    { expand: true, cwd: "src/js/", src: [ "**/*.js" ], dest: "dist/js/", filter: "isFile", ext: ".min.js" }
-                ]
-            }
-        },
-        
-        watch: {
-            dist: {
-                files: [ "Gruntfile.js", "src/**/.htaccess", "src/**/.htpasswd", "src/**/*.*", "src/**/*" ],
-                tasks: [ "clean", "copy", "sass", "uglify" ],
-                options: {
-                    reload: true
-                }
+                files: [{
+                    expand: true,
+                    cwd: "out/",
+                    src: ["**/*.css"],
+                    dest: "dist/",
+                    filter: "isFile"
+                }]
             }
         }
     });
-    
-    grunt.registerTask("default", [ "clean", "copy", "sass", "uglify", "watch" ]);
+
+    // noinspection SpellCheckingInspection
+    grunt.registerTask("default", ["copy_modified", "sass", "postcss", "uglify", "clean:out"]);
+    // noinspection SpellCheckingInspection
+    grunt.registerTask("initial", ["copy", "sass", "postcss", "uglify", "clean:out"]);
 };
